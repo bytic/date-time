@@ -1,0 +1,52 @@
+{
+  "name": "bytic/date-time",
+  "type": "library",
+  "description": "Date and time library",
+  "homepage": "https://github.com/bytic/date-time",
+  "license": "MIT",
+  "keywords": [
+    "DateTime",
+    "Date",
+    "Time"
+  ],
+  "authors": [
+    {
+      "name": "Gabriel Solomon",
+      "email": "hello@gabrielsolomon.ro"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "ByTIC\\DateTime\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ByTIC\\DateTime\\Tests\\Fixtures\\": "tests/fixtures",
+      "ByTIC\\DateTime\\Tests\\": "tests/src"
+    }
+  },
+  "require": {
+    "php": "^7.1 || ^8.0",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "bytic/phpqatools": "^1.0",
+    "mockery/mockery": "^1.0"
+  },
+  "scripts": {
+    "tests": [
+      "@analyse",
+      "@test"
+    ],
+    "test": [
+      "phpunit"
+    ],
+    "analyse": [
+      "@stan",
+      "@psalm"
+    ],
+    "stan": "phpstan analyse",
+    "psalm": "psalm --output-format=compact --find-dead-code --find-unused-psalm-suppress --long-progress "
+  }
+}
