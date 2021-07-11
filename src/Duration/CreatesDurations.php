@@ -57,6 +57,11 @@ trait CreatesDurations
         throw InvalidDuration::because(sprintf('Unknown or bad format (%s)', $duration));
     }
 
+    public static function createFromDateIntervalSpec(string $duration): self
+    {
+        return new self($duration);
+    }
+
     public static function createFromDateInterval(DateInterval $duration): self
     {
         $new = new self('PT0S');
@@ -176,6 +181,31 @@ trait CreatesDurations
         }
 
         return $new;
+    }
+
+    public static function ofSeconds(int $value): self
+    {
+        return static::createFromSeconds($value);
+    }
+
+    public static function ofMinutes(int $value): self
+    {
+        return static::createFromSeconds($value * static::SECONDS_IN_MINUTE);
+    }
+
+    public static function ofHours(int $value): self
+    {
+        return static::createFromSeconds($value * static::SECONDS_IN_HOUR);
+    }
+
+    public static function ofDays(int $value): self
+    {
+        return static::createFromSeconds($value * static::SECONDS_IN_DAY);
+    }
+
+    public static function ofWeeks(int $value): self
+    {
+        return static::createFromSeconds($value * static::SECONDS_IN_WEEK);
     }
 
     private static function now(): DateTimeImmutable

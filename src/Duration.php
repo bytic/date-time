@@ -12,9 +12,10 @@ use Throwable;
  * Class Duration
  * @package ByTIC\DateTime
  */
-class Duration extends DateInterval implements \JsonSerializable
+class Duration extends DateInterval implements \JsonSerializable, DurationInterface
 {
     use Duration\CheckDuration;
+    use Duration\CompareDurations;
     use Duration\CreatesDurations;
     use Duration\FormatDurations;
     use Duration\TransformDurations;

@@ -31,4 +31,16 @@ class CreatesDurationsTest extends AbstractTest
             [19999, 'PT5H33M19S'],
         ];
     }
+
+    public function test_ofSeconds()
+    {
+        self::assertSame('PT50S', (string)Duration::ofSeconds(50));
+        self::assertSame('PT1M', (string)Duration::ofSeconds(60));
+        self::assertSame('PT2M', (string)Duration::ofSeconds(120));
+    }
+
+    public function test_ofWeeks()
+    {
+        self::assertSame('PT168H', (string)Duration::ofWeeks(1));
+    }
 }
